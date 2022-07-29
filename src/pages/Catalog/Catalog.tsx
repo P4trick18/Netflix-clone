@@ -8,7 +8,7 @@ function Catalog() {
   const navigate = useNavigate()
   const [popularMovies, setPopularMovies] = useState<string[]>([])
   const [topRatedMovies, setTopRatedMovies] = useState<string[]>([])
-  const [GenreMovies, setGenreMovies] = useState<string[]>([])
+  const [ReleaseDatesMovies, setReleaseDatesMovies] = useState<string[]>([])
 
   const imgUrl = 'https://image.tmdb.org/t/p/w300'
 
@@ -54,8 +54,8 @@ function Catalog() {
           setTopRatedMovies(movieImgs)
         })
     }
-    function searchGenre() {
-      ApiTmbService.getGenre()
+    function searchReleaseDates() {
+      ApiTmbService.getReleaseDates()
         .then((response) => {
           const novaResposta = response.results
   
@@ -69,21 +69,24 @@ function Catalog() {
             return imgUrl + result.poster_path
           })
           console.log(movieImgs)
-          setGenreMovies(movieImgs)
+          setReleaseDatesMovies(movieImgs)
         })
     }
 
     searchPopular()
     searchTopRated()
-    searchGenre()
+    searchReleaseDates()
   }, [])
 
   return <>
     <Title>Catalogo</Title>
     <List title='Populares'  moviesImg={popularMovies} />
     <List title='Top Assistidos' moviesImg={topRatedMovies} />
-    <List title='Genero' moviesImg={GenreMovies} />
-    <button type='button' onClick={() => sendToMovie(438148)}>Redirect</button>
+    <List title='Datas de Lancamento' moviesImg={ReleaseDatesMovies} />
+    <button type='button' onClick={() => sendToMovie(438148)}>Minions 2</button>
+    <button type='button' onClick={() => sendToMovie(1365)}>A ultima ceia</button>
+    <button type='button' onClick={() => sendToMovie(9584)}>Comboio</button>
+    <button type='button' onClick={() => sendToMovie(2125)}>Alianca moral</button>
   </>
 }
 

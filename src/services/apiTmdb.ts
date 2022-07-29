@@ -28,15 +28,13 @@ async function getTopRated() {
       .then((response) => response.data)
 }
 
-
-async function getGenre() {
-  return await api.get<PaginationInterface>('/movie/genre', { params })
+async function getMovieDetails(movieId: number) {
+  return await api.get<MovieInterface>('/movie/' + movieId, { params })
       .then((response) => response.data)
 }
 
-
-async function getMovieDetails(movieId: number) {
-  return await api.get<MovieInterface>('/movie/' + movieId, { params })
+async function getReleaseDates() {
+  return await api.get<PaginationInterface>('/movie/release_dates', { params })
       .then((response) => response.data)
 }
 
@@ -44,5 +42,5 @@ export {
   getPolular,
   getTopRated,
   getMovieDetails,
-  getGenre,
+  getReleaseDates
 }
