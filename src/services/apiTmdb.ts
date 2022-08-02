@@ -33,14 +33,15 @@ async function getMovieDetails(movieId: number) {
       .then((response) => response.data)
 }
 
-async function getReleaseDates() {
-  return await api.get<PaginationInterface>('/movie/release_dates', { params })
+async function getUpcoming() {
+  return await api.get<PaginationInterface>('/movie/upcoming', { params })
       .then((response) => response.data)
 }
+
 
 export {
   getPolular,
   getTopRated,
   getMovieDetails,
-  getReleaseDates
+  getUpcoming
 }
